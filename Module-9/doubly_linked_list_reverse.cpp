@@ -65,6 +65,7 @@ int main()
             break;
         insert_at_tail(head, tail, val);
     }
+    reverse_doubly(head, tail);
     print_forward(head);
 
     return 0;
