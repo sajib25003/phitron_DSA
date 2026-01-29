@@ -1,0 +1,26 @@
+int count_order(Node *root)
+{
+    int cnt = 0;
+    if (root == NULL)
+    {
+        cout << "No Tree" << endl;
+        return 0;
+    }
+    queue<Node *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        // get the node and remove from queue
+        Node *f = q.front();
+        q.pop();
+        // do the task
+        // cout << f->val << " ";
+        cnt++;
+        // push the child in q if the child is available
+        if (f->left != NULL) // f->left != NULL & f->left will do the same
+            q.push(f->left);
+        if (f->right != NULL)
+            q.push(f->right);
+    }
+    return cnt;
+}
