@@ -1,0 +1,6 @@
+Type of Algorithms:
+1. DFS : O(V+E) : user for traversal of graph
+2. BFS : O(V+E) : find single src shortest path of unweighted graph
+3. Dijkstra Algorithm : O(E*logV) : find single src shortest path of weighted graph
+4. Bellman-Ford Algorithm : O(V*E) : find single src shortest path of negative-weighted-cycle graph
+5. Floyd-Warshall Algorithm : O(V^3) : find multiple src shortest path & detect negative-weighted-cycle in a graph

@@ -1,0 +1,2 @@
+-> every node is used as source
+-> we need a 2D distance array

@@ -18,12 +18,12 @@ public:
 
 vector<Edge> edge_list;
 
-void bellman_ford()
+void bellman_ford() // O(V*E)
 {
 
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0; i < n - 1; i++) // O(V)
     {
-        for (auto ed : edge_list)
+        for (auto ed : edge_list) // O(E)
         {
             // relax here
             int a, b, c;
@@ -36,6 +36,30 @@ void bellman_ford()
             }
         }
     }
+
+    // detecting negative cycle
+    bool cycle = false;
+    for (auto ed : edge_list) // O(E)
+    {
+        // relax here
+        int a, b, c;
+        a = ed.a;
+        b = ed.b;
+        c = ed.c;
+        if (dis[a] != INT_MAX && dis[a] + c < dis[b])
+        {
+            cycle = true;
+        }
+    }
+    if (cycle)
+        cout << "Negative weighted cycle detected" << endl;
+    else
+    {
+        for (int i = 0; i < n; i++)
+        {
+            cout << i << " : " << dis[i] << endl;
+        }
+    };
 }
 
 int main()
@@ -46,6 +70,7 @@ int main()
         int a, b, c; // c is the weight/cost
         cin >> a >> b >> c;
         edge_list.push_back(Edge(a, b, c));
+        // edge_list.push_back(Edge(b, a, c)); // for undirected graph
     }
 
     for (int i = 0; i < n; i++)
@@ -55,11 +80,6 @@ int main()
     dis[0] = 0;
 
     bellman_ford();
-
-    for (int i = 0; i < n; i++)
-    {
-        cout << i << " : " << dis[i] << endl;
-    }
 
     // for (auto ed : edge_list)
     // {
